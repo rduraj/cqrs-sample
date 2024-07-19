@@ -4,8 +4,17 @@ import { Product } from '../Product'
 import { NegativePriceNumberError } from '../NegativePriceNumberError'
 
 test("Cannot create product w/ negative price", () => {
+  // given:
+  const product = new Product()
+
+  // then:
   try {
-    new Product("name", "description", -1, 0)
+    product.create(
+        "name",
+        "description",
+        -1,
+        0
+    )
   } catch(err) {
     assert(err instanceof NegativePriceNumberError)
   }

@@ -6,7 +6,6 @@ export class ProductStock {
     private amount = 0
   ) {}
 
-
   public get stock(): number{
     return this.amount
   }

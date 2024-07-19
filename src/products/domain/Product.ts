@@ -2,15 +2,15 @@ import { NegativePriceNumberError } from "./NegativePriceNumberError";
 import { ProductStock } from "./ProductStock";
 
 export class Product {
-  private stock: ProductStock;
+  private stock: ProductStock = new ProductStock();
 
-  constructor(
-    private readonly name: string,
-    private readonly description: string,
-    private readonly price: number,
+  create(
+    name: string,
+    description: string,
+    price: number,
     stock: number
   ) {
-    if (this.price < 0) {
+    if (price < 0) {
       throw new NegativePriceNumberError()
     }
 
