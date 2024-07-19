@@ -13,8 +13,8 @@ type CreateProductPayload = {
 };
 
 const schema = Joi.object<CreateProductPayload>({
-  name: Joi.string().required(),
-  description: Joi.string().required(),
+  name: Joi.string().max(50).required(),
+  description: Joi.string().max(50).required(),
   price: Joi.number().positive().required(),
   stock: Joi.number().required()
 });
