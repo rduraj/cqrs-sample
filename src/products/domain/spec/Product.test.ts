@@ -8,7 +8,7 @@ test('Cannot create product w/ negative price', () => {
 
   // then:
   try {
-    product.from('0000', 'name', 'description', -1, 0);
+    product.constructor('0000', 'name', 'description', -1, 0);
   } catch (err) {
     expect(err instanceof NegativePriceNumberError);
   }

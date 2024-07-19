@@ -4,29 +4,29 @@ import logger from 'shared/logger.ts';
 import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
 import { BadRequestError } from 'interface/http/errors/BadRequestError.ts';
 import Joi from 'joi';
+import { NotFoundError } from 'interface/http/errors/NotFoundError.ts';
 
-type CreateProductPayload = {
-  name: string;
-  description: string;
-  price: number;
-  stock: number;
+type SellProductPayload = {
+  amountOfSoldItems: number;
 };
 
-const schema = Joi.object<CreateProductPayload>({
-  name: Joi.string().required(),
-  description: Joi.string().required(),
-  price: Joi.number().positive().required(),
-  stock: Joi.number().required()
+const schema = Joi.object<SellProductPayload>({
+  amountOfSoldItems: Joi.number().required().positive()
 });
-export const createProductRoute =
+export const sellProductRoute =
   (products: ProductsFacade) => async (req: Request, res: Response) => {
+    const id = req.params.id;
+    if (!id) {
+      throw new BadRequestError('No ID given.');
+    }
+
     const { error, value } = schema.validate(req.body);
 
     if (error) {
       throw new BadRequestError(error.message);
     }
 
-    await products.create(value.name, value.description, value.price, value.stock);
+    await products.sell(id, value.amountOfSoldItems);
 
     return res.status(HttpStatusCode.SUCCESS).send();
   };

@@ -4,6 +4,6 @@ switch (INTERFACE) {
   case 'http':
     const runner = await import('./src/interface/http/runner.ts');
 
-    runner.default();
+    await runner.default();
     break;
 }

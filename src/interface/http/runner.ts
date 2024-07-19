@@ -6,15 +6,25 @@ import bodyParser from 'body-parser';
 import { bootstrap } from 'interface/bootstrap.ts';
 import { createProductRoute } from 'interface/http/products/createProductRoute.ts';
 import { httpErrorWrapper } from 'interface/http/httpErrorWrapper.ts';
+import { sellProductRoute } from 'interface/http/products/sellProductRoute.ts';
+import { restockProductRoute } from 'interface/http/products/restockProductRoute.ts';
 
-const runner = () => {
+const runner = async () => {
   const app = express();
-  const { products } = bootstrap();
+  const { products } = await bootstrap();
 
   app.use(helmet());
   app.use(bodyParser.json());
 
+  /** Products **/
   app.post('/products', httpErrorWrapper(createProductRoute(products)));
+  // Author note:
+  // I would consider using PATCH method in those two particular endpoints:
+  app.post('/products/:id/restock', httpErrorWrapper(restockProductRoute(products)));
+  app.post('/products/:id/sell', httpErrorWrapper(sellProductRoute(products)));
+
+  /** Orders **/
+  // app.post('/orders', httpErrorWrapper())
 
   app.listen(PORT, () => {
     logger.info(`API started on port ${PORT}`);

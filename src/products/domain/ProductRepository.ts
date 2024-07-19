@@ -5,5 +5,7 @@ export interface ProductRepository {
 
   findAll(): Promise<Array<Product>>;
 
+  findOne(id: string): Promise<Product>;
+
   update(product: Product): Promise<Product>;
 }
