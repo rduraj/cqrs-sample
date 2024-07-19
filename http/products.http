@@ -1,0 +1,4 @@
+POST http://localhost:8181/products
+Content-Type: application/json
+
+{ "name" : "Starship", "description": "Still hot X-Wing", "price": 12, "stock": 2 }

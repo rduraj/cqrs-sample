@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert';
+import { expect, test } from 'vitest';
 import { ProductStock } from '../ProductStock';
 import { DecreasingStockBelowZeroError } from 'products/domain/errors/DecreasingStockBelowZeroError';
 
@@ -11,7 +10,7 @@ test('can increase product stock', () => {
   const updatedStock = stock.increase(5);
 
   // then:
-  assert.strictEqual(updatedStock.stock, 6);
+  expect(updatedStock.stock, 6);
 });
 
 test('can decrease product stock', () => {
@@ -22,7 +21,7 @@ test('can decrease product stock', () => {
   const updatedStock = stock.decrease(1);
 
   // then:
-  assert.strictEqual(updatedStock.stock, 0);
+  expect(updatedStock.stock, 0);
 });
 
 test('prevent from decreasing below zero', () => {
@@ -33,6 +32,6 @@ test('prevent from decreasing below zero', () => {
   try {
     stock.decrease(2);
   } catch (e) {
-    assert(e instanceof DecreasingStockBelowZeroError);
+    expect(e instanceof DecreasingStockBelowZeroError);
   }
 });

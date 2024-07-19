@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert';
+import { expect, test } from 'vitest';
 import { Product } from '../Product';
 import { NegativePriceNumberError } from 'products/domain/errors/NegativePriceNumberError';
 
@@ -11,6 +10,6 @@ test('Cannot create product w/ negative price', () => {
   try {
     product.from('0000', 'name', 'description', -1, 0);
   } catch (err) {
-    assert(err instanceof NegativePriceNumberError);
+    expect(err instanceof NegativePriceNumberError);
   }
 });
