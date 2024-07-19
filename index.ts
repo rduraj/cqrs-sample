@@ -1,12 +1,9 @@
-import express from 'express'
-import { PORT } from 'shared/config'
-import logger from 'shared/logger'
-import helmet from 'helmet'
+import { INTERFACE } from 'shared/config/envs.ts';
 
-const app = express()
+switch (INTERFACE) {
+  case 'http':
+    const runner = await import('./src/interface/http/runner.ts');
 
-app.use(helmet)
-
-app.listen(PORT, () => {
-  logger.info(`API started on port ${PORT}`)
-})
+    runner.default();
+    break;
+}

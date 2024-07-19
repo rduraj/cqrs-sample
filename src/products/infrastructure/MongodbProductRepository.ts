@@ -1,18 +1,19 @@
-import {ProductRepository} from "../domain/ProductRepository.ts";
-import {Product} from "../domain/Product.ts";
+import { ProductRepository } from '../domain/ProductRepository.ts';
+import { Product } from '../domain/Product.ts';
+import { MongoClient } from 'mongodb';
 
 export class MongodbProductRepository implements ProductRepository {
-    create(product: Product): Product {
-        return new Product();
-    }
+  constructor(private readonly mongoClient: MongoClient) {}
 
-    findAll(): Array<Product> {
-        return [new Product()];
-    }
+  create(product: Product): Promise<Product> {
+    return Promise.resolve(new Product());
+  }
 
-    update(product: Product): Product {
-        return new Product();
-    }
+  findAll(): Promise<Array<Product>> {
+    return Promise.resolve([new Product()]);
+  }
 
-
+  update(product: Product): Promise<Product> {
+    return Promise.resolve(new Product());
+  }
 }

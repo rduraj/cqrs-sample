@@ -1,11 +1,9 @@
-import {Product} from "./Product.ts";
+import { Product } from './Product.ts';
 
 export interface ProductRepository {
+  create(product: Product): Promise<Product>;
 
-    create(product: Product): Product
+  findAll(): Promise<Array<Product>>;
 
-    update(product: Product): Product
-
-    findAll(): Array<Product>
-
+  update(product: Product): Promise<Product>;
 }
