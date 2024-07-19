@@ -3,19 +3,31 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "node --loader tsx --test ./src/**/**/*Test.ts"
+    "test": "node --loader tsx --test ./src/**/**/*Test.ts",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "devDependencies": {
+    "@eslint/js": "^9.7.0",
     "@types/express": "4.17.21",
     "@types/node": "^20.14.11",
-    "tsx": "4.16.2"
-  },
-  "peerDependencies": {
-    "typescript": "5.0.0"
+    "@types/uuid": "^10.0.0",
+    "eslint": "9.x",
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
+    "tsx": "4.16.2",
+    "typescript-eslint": "^7.16.1",
+    "typescript": "5.5.3"
   },
   "dependencies": {
     "env-var": "7.5.0",
     "express": "4.19.2",
-    "helmet": "7.1.0"
-  }
+    "helmet": "7.1.0",
+    "uuid": "^10.0.0"
+  },
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "git@github.com:rduraj/cqrs-sample.git",
+  "author": "Robert Duraj <rduraj@gmail.com>",
+  "license": "MIT"
 }
