@@ -1,7 +1,11 @@
 version: "3.8"
 
+# Author note:
+# Single-node replica set setup to bypass mongodb's transaction limitations
+# Setup from: https://medium.com/workleap/the-only-local-mongodb-replica-set-with-docker-compose-guide-youll-ever-need-2f0b74dd8384
+
 services:
-  mongo1:
+  mongodb:
     image: mongo:7.0
     command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
     ports:
@@ -17,7 +21,22 @@ services:
     volumes:
       - "mongo1_data:/data/db"
       - "mongo1_config:/data/configdb"
-
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app
+    depends_on:
+      - mongodb
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://localhost:27017/?directConnection=true
+      - MONGODB_DATABASE=cqrs
+      - INTERFACE=http
 volumes:
   mongo1_data:
   mongo1_config:

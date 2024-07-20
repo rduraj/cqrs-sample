@@ -6,7 +6,7 @@ export const findProductsRoute =
   (products: ProductFacade) => async (req: Request, res: Response) => {
     const listOfProducts = await products.getListOfProducts();
 
-    if (listOfProducts) {
+    if (listOfProducts.length === 0) {
       throw new NotFoundError('Products not found');
     }
 
