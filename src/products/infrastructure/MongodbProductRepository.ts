@@ -1,6 +1,5 @@
 import { ProductRepository } from '../domain/ProductRepository.ts';
 import { Product } from '../domain/Product.ts';
-import { Db } from 'mongodb';
 import { ProductNotFoundError } from 'products/domain/errors/ProductNotFoundError.ts';
 import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
 

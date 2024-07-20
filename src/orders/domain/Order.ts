@@ -1,5 +1,3 @@
-import { uuid } from 'shared/uuid.ts';
-
 class OrderProduct {
   constructor(
     private readonly id: string,

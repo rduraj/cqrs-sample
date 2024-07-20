@@ -3,6 +3,7 @@ import { Order } from 'orders/domain/Order.ts';
 import { SellProductCommand } from 'products/domain/events/SellProductCommand.ts';
 import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand.ts';
 import { OrderRepository } from 'orders/domain/OrderRepository.ts';
+import logger from 'shared/logger.ts';
 
 export class OrderPlacingService {
   constructor(
@@ -27,7 +28,7 @@ export class OrderPlacingService {
       await Promise.all(productAdding);
       await this.eventEmitter.emitAsync(PlaceOrderCommand.name, new PlaceOrderCommand(order));
     } catch (error) {
-      console.log('abc', error);
+      logger.error(`Order transaction failed: ${error.message}`);
       this.repository.withdrawPlacingOrder();
     }
   }

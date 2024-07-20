@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { ProductFacade } from 'products/application/ProductFacade.ts';
-import logger from 'shared/logger.ts';
 import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
 import { BadRequestError } from 'interface/http/errors/BadRequestError.ts';
 import Joi from 'joi';
