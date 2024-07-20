@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ProductsFacade } from 'products/application/ProductsFacade.ts';
+import { ProductFacade } from 'products/application/ProductFacade.ts';
 import logger from 'shared/logger.ts';
 import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
 import { BadRequestError } from 'interface/http/errors/BadRequestError.ts';
@@ -14,7 +14,7 @@ const schema = Joi.object<SellProductPayload>({
   amountOfSoldItems: Joi.number().required().positive()
 });
 export const sellProductRoute =
-  (products: ProductsFacade) => async (req: Request, res: Response) => {
+  (products: ProductFacade) => async (req: Request, res: Response) => {
     const id = req.params.id;
     if (!id) {
       throw new BadRequestError('No ID given.');

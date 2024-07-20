@@ -2,11 +2,12 @@ import { ProductRepository } from '../domain/ProductRepository.ts';
 import { Product } from '../domain/Product.ts';
 import { Db } from 'mongodb';
 import { ProductNotFoundError } from 'products/domain/errors/ProductNotFoundError.ts';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
 
 export class MongodbProductRepository implements ProductRepository {
   private collection;
-  constructor(private readonly mongoClient: Db) {
-    this.collection = mongoClient.collection('products');
+  constructor(private readonly mongoClient: MongoDbOperator) {
+    this.collection = mongoClient.db.collection('products');
   }
 
   create(product: Product): Promise<Product> {
@@ -28,7 +29,8 @@ export class MongodbProductRepository implements ProductRepository {
           ...product,
           stock: product.howManyLeft()
         }
-      }
+      },
+      { session: this.mongoClient.session }
     );
   }
 

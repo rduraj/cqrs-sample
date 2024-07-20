@@ -6,7 +6,7 @@ import { CreateProductHandler } from 'products/application/CreateProductHandler.
 import { RestockProductHandler } from 'products/application/RestockProductHandler.ts';
 import { SellProductHandler } from 'products/application/SellProductHandler.ts';
 
-export class ProductsFacade {
+export class ProductFacade {
   constructor(
     private readonly eventEmitter: EventEmitter,
     private readonly createProductHandler: CreateProductHandler,

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ProductsFacade } from 'products/application/ProductsFacade.ts';
+import { ProductFacade } from 'products/application/ProductFacade.ts';
 import logger from 'shared/logger.ts';
 import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
 import { BadRequestError } from 'interface/http/errors/BadRequestError.ts';
@@ -19,7 +19,7 @@ const schema = Joi.object<CreateProductPayload>({
   stock: Joi.number().required()
 });
 export const createProductRoute =
-  (products: ProductsFacade) => async (req: Request, res: Response) => {
+  (products: ProductFacade) => async (req: Request, res: Response) => {
     const { error, value } = schema.validate(req.body);
 
     if (error) {

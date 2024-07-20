@@ -8,10 +8,11 @@ import { createProductRoute } from 'interface/http/products/createProductRoute.t
 import { httpErrorWrapper } from 'interface/http/httpErrorWrapper.ts';
 import { sellProductRoute } from 'interface/http/products/sellProductRoute.ts';
 import { restockProductRoute } from 'interface/http/products/restockProductRoute.ts';
+import { placeOrderRoute } from 'interface/http/orders/placeOrderRoute.ts';
 
 const runner = async () => {
   const app = express();
-  const { products } = await bootstrap();
+  const { products, orders } = await bootstrap();
 
   app.use(helmet());
   app.use(bodyParser.json());
@@ -24,7 +25,7 @@ const runner = async () => {
   app.post('/products/:id/sell', httpErrorWrapper(sellProductRoute(products)));
 
   /** Orders **/
-  // app.post('/orders', httpErrorWrapper())
+  app.post('/orders', httpErrorWrapper(placeOrderRoute(orders)));
 
   app.listen(PORT, () => {
     logger.info(`API started on port ${PORT}`);

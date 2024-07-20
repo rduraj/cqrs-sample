@@ -1,13 +1,16 @@
 import { productsModuleConfig } from 'products/ProductsModuleConfig.ts';
 import { EventEmitter } from 'shared/events/EventEmitter.ts';
 import { MONGODB_URI } from 'shared/config/envs.ts';
-import { MongoClient } from 'mongodb';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
+import { ordersModuleConfig } from 'orders/OrdersModuleConfig.ts';
 
 export const bootstrap = async () => {
-  const eventEmmiter = new EventEmitter();
-  const mongoClient = await new MongoClient(MONGODB_URI).connect();
+  const eventEmitter = new EventEmitter();
+  const mongoOperator = await new MongoDbOperator(MONGODB_URI, 'admin');
+  await mongoOperator.connect();
 
   return {
-    products: productsModuleConfig(eventEmmiter, mongoClient.db('cqrs'))
+    products: productsModuleConfig(eventEmitter, mongoOperator),
+    orders: ordersModuleConfig(eventEmitter, mongoOperator)
   };
 };
