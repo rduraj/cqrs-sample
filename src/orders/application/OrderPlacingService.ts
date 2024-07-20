@@ -27,7 +27,7 @@ export class OrderPlacingService {
       await Promise.all(productAdding);
       await this.eventEmitter.emitAsync(PlaceOrderCommand.name, new PlaceOrderCommand(order));
     } catch (error) {
-      console.log(error);
+      console.log('abc', error);
       this.repository.withdrawPlacingOrder();
     }
   }

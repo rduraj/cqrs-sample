@@ -11,8 +11,8 @@ export class MongoDbOperator {
     this.mongoDb = this.mongoClient.db(database);
   }
 
-  connect() {
-    return this.mongoClient.connect();
+  async connect() {
+    await this.mongoClient.connect();
   }
 
   get db() {

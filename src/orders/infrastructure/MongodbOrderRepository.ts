@@ -1,6 +1,6 @@
 import { OrderRepository } from 'orders/domain/OrderRepository.ts';
 import { Order } from 'orders/domain/Order.ts';
-import { ClientSession, Collection, Db, MongoClient } from 'mongodb';
+import { ClientSession, Collection } from 'mongodb';
 import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
 
 export class MongodbOrderRepository implements OrderRepository {
@@ -8,7 +8,7 @@ export class MongodbOrderRepository implements OrderRepository {
   private readonly collection: Collection;
 
   constructor(private readonly mongoClient: MongoDbOperator) {
-    this.collection = mongoClient.db.collection('products');
+    this.collection = mongoClient.db.collection('orders');
   }
 
   async create(order: Order): Promise<Order> {
