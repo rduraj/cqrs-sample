@@ -22,7 +22,7 @@ const runner = async () => {
   app.get('/products', httpErrorWrapper(findProductsRoute(products)));
   app.post('/products', httpErrorWrapper(createProductRoute(products)));
   // Author note:
-  // I would consider using PATCH method in those two particular endpoints:
+  // I would consider using the PATCH method on those two particular endpoints:
   app.post('/products/:id/restock', httpErrorWrapper(restockProductRoute(products)));
   app.post('/products/:id/sell', httpErrorWrapper(sellProductRoute(products)));
 
