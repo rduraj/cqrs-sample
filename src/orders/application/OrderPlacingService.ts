@@ -30,6 +30,8 @@ export class OrderPlacingService {
     } catch (error) {
       logger.error(`Order transaction failed: ${error.message}`);
       this.repository.withdrawPlacingOrder();
+
+      throw error;
     }
   }
 }
