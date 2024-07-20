@@ -1,4 +1,6 @@
 import { from } from 'env-var';
+import * as process from 'process';
+
 const env = from(process.env);
 
 export const PORT = env.get('PORT').default(8080).asPortNumber();

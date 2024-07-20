@@ -8,6 +8,9 @@ Here you can find Miro board screenshot:
 
 ![Event Storming Miro Board](./docs/event-storming.png "Event Storming Miro Board")
 
+# Requirements:
+
+- Node.js version >= 20.14.0
 
 # Installation:
 
@@ -25,9 +28,10 @@ Not the whole API is covered by tests yet, but if you want to run existing, use 
 `$ yarn test`
 
 ### Application setup (Docker Image version) 
-1. Run `$ docker compose up`
+1. Run `$ docker compose up` to run both API and MongoDB
 
 ## Database Setup
+_(for application run on local machine)_
 1. Run `$ docker compose up -d mongodb` to run *MongoDb* container on your local machine.
-4. Now you can connect to your database by passing following uri in .env:
+2. Now you can connect to your database by passing following uri in .env:
 `mongodb://localhost:27017/?directConnection=true`
