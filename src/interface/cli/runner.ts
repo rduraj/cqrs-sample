@@ -1,6 +1,6 @@
 import prompts from 'prompts';
-import { bootstrap } from 'interface/bootstrap';
-import logger from 'shared/logger';
+import { bootstrap } from '@/interface/bootstrap';
+import logger from '@/shared/logger';
 import * as process from 'process';
 
 /**

@@ -1,9 +1,9 @@
 import { Order } from './Order';
 
 export interface OrderRepository {
-  startPlacingOrder();
+  startPlacingOrder(): void;
 
-  create(order: Order): Promise<Order>;
+  create(order: Order): Promise<void>;
 
-  withdrawPlacingOrder();
+  withdrawPlacingOrder(): void;
 }

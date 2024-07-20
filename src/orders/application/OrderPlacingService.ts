@@ -1,9 +1,9 @@
-import { EventEmitter } from 'shared/events/EventEmitter';
-import { Order } from 'orders/domain/Order';
-import { SellProductCommand } from 'products/domain/events/SellProductCommand';
-import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand';
-import { OrderRepository } from 'orders/domain/OrderRepository';
-import logger from 'shared/logger';
+import { EventEmitter } from '@/shared/events/EventEmitter';
+import { Order } from '@/orders/domain/Order';
+import { SellProductCommand } from '@/products/domain/events/SellProductCommand';
+import { PlaceOrderCommand } from '@/orders/domain/events/PlaceOrderCommand';
+import { OrderRepository } from '@/orders/domain/OrderRepository';
+import logger from '@/shared/logger';
 
 export class OrderPlacingService {
   constructor(
@@ -28,7 +28,9 @@ export class OrderPlacingService {
       await Promise.all(productAdding);
       await this.eventEmitter.emitAsync(PlaceOrderCommand.name, new PlaceOrderCommand(order));
     } catch (error) {
-      logger.error(`Order transaction failed: ${error.message}`);
+      if (error instanceof Error) {
+        logger.error(`Order transaction failed: ${error.message}`);
+      }
       this.repository.withdrawPlacingOrder();
 
       throw error;

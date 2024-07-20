@@ -1,5 +1,5 @@
-import { HttpError } from 'interface/http/errors/HttpError';
-import { HttpStatusCode } from 'interface/http/HttpStatusCode';
+import { HttpError } from '@/interface/http/errors/HttpError';
+import { HttpStatusCode } from '@/interface/http/HttpStatusCode';
 
 export class NotFoundError extends HttpError {
   constructor(message = 'Not found.') {

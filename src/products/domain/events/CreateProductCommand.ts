@@ -1,4 +1,4 @@
-import { Event } from 'shared/events/Event';
+import { Event } from '@/shared/events/Event';
 
 export class CreateProductCommand extends Event {
   constructor(

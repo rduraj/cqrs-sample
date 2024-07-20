@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { ProductStock } from '../ProductStock';
-import { DecreasingStockBelowZeroError } from 'products/domain/errors/DecreasingStockBelowZeroError';
+import { DecreasingStockBelowZeroError } from '../errors/DecreasingStockBelowZeroError';
 
 test('can increase product stock', () => {
   // when:

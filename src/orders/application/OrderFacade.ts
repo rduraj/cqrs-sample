@@ -1,4 +1,4 @@
-import { OrderPlacingService } from 'orders/application/OrderPlacingService';
+import { OrderPlacingService } from '@/orders/application/OrderPlacingService';
 
 export class OrderFacade {
   constructor(private orderPlacingService: OrderPlacingService) {}

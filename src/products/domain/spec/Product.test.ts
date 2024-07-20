@@ -1,15 +1,13 @@
 import { expect, test } from 'vitest';
 import { Product } from '../Product';
-import { NegativePriceNumberError } from 'products/domain/errors/NegativePriceNumberError';
+import { NegativePriceNumberError } from '../errors/NegativePriceNumberError';
 
 test('Cannot create product w/ negative price', () => {
-  // given:
-  const product = new Product();
-
-  // then:
   try {
-    product.constructor('0000', 'name', 'description', -1, 0);
+    // given:
+    new Product('0000', 'name', 'description', -1, 0);
   } catch (err) {
+    // then:
     expect(err instanceof NegativePriceNumberError);
   }
 });

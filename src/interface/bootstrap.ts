@@ -1,8 +1,8 @@
-import { productsModuleConfig } from 'products/ProductsModuleConfig';
-import { EventEmitter } from 'shared/events/EventEmitter';
-import { MONGODB_DATABASE, MONGODB_URI } from 'shared/config/envs';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator';
-import { ordersModuleConfig } from 'orders/OrdersModuleConfig';
+import { productsModuleConfig } from '@/products/ProductsModuleConfig';
+import { EventEmitter } from '@/shared/events/EventEmitter';
+import { MONGODB_DATABASE, MONGODB_URI } from '@/shared/config/envs';
+import { MongoDbOperator } from '@/shared/database/MongoDbOperator';
+import { ordersModuleConfig } from '@/orders/OrdersModuleConfig';
 
 export const bootstrap = async () => {
   const eventEmitter = new EventEmitter();

@@ -1,7 +1,7 @@
 import { ProductRepository } from '../domain/ProductRepository';
 import { Product } from '../domain/Product';
-import { ProductNotFoundError } from 'products/domain/errors/ProductNotFoundError';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator';
+import { ProductNotFoundError } from '@/products/domain/errors/ProductNotFoundError';
+import { MongoDbOperator } from '@/shared/database/MongoDbOperator';
 
 export class MongodbProductRepository implements ProductRepository {
   private collection;
@@ -9,16 +9,16 @@ export class MongodbProductRepository implements ProductRepository {
     this.collection = mongoClient.db.collection('products');
   }
 
-  create(product: Product): Promise<Product> {
-    return this.collection.insertOne({
+  async create(product: Product): Promise<void> {
+    await this.collection.insertOne({
       ...product,
       stock: product.howManyLeft()
     });
   }
 
-  update(product: Product): Promise<Product> {
-    return this.collection.updateOne(
-      { _id: product.id() },
+  async update(product: Product): Promise<void> {
+    await this.collection.updateOne(
+      { id: product.id() },
       {
         $set: {
           ...product,
@@ -30,13 +30,13 @@ export class MongodbProductRepository implements ProductRepository {
   }
 
   async findOne(id: string): Promise<Product> {
-    const product = await this.collection.findOne({ _id: id });
+    const product = await this.collection.findOne({ id: id });
     if (!product) {
       throw new ProductNotFoundError();
     }
 
     return new Product(
-      product._id,
+      product.id.toString(),
       product.name,
       product.description,
       product.price,

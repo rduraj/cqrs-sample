@@ -1,5 +1,5 @@
-import { FindProductsReadModel } from 'products/domain/FindProductsReadModel';
+import { ProductModel } from './ProductModel';
 
 export interface FindProductsRepository {
-  findAll(): Promise<Array<FindProductsReadModel>>;
+  findAll(): Promise<Array<ProductModel>>;
 }

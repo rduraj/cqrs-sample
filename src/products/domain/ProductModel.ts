@@ -1,5 +1,5 @@
-export interface FindProductsReadModel {
-  _id: string;
+export interface ProductModel {
+  id: string;
   name: string;
   description: string;
   price: number;

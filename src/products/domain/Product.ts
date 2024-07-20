@@ -1,6 +1,6 @@
 import { NegativePriceNumberError } from './errors/NegativePriceNumberError';
 import { ProductStock } from './ProductStock';
-import { uuid } from 'shared/uuid';
+import { uuid } from '@/shared/uuid';
 
 export class Product {
   #productStock: ProductStock = new ProductStock();

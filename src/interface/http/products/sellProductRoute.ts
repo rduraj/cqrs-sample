@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { ProductFacade } from 'products/application/ProductFacade';
-import { HttpStatusCode } from 'interface/http/HttpStatusCode';
-import { BadRequestError } from 'interface/http/errors/BadRequestError';
+import { ProductFacade } from '@/products/application/ProductFacade';
+import { HttpStatusCode } from '@/interface/http/HttpStatusCode';
+import { BadRequestError } from '@/interface/http/errors/BadRequestError';
 import Joi from 'joi';
 
 type SellProductPayload = {

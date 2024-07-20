@@ -1,18 +1,17 @@
-import { EventHandler } from 'shared/events/EventHandler';
-import { EventEmitter } from 'shared/events/EventEmitter';
-import { ProductRepository } from 'products/domain/ProductRepository';
-import { SellProductCommand } from 'products/domain/events/SellProductCommand';
+import { EventHandler } from '@/shared/events/EventHandler';
+import { EventEmitter } from '@/shared/events/EventEmitter';
+import { ProductRepository } from '@/products/domain/ProductRepository';
+import { SellProductCommand } from '@/products/domain/events/SellProductCommand';
 
 export class SellProductHandler extends EventHandler {
   constructor(
-    private readonly eventEmitter: EventEmitter,
+    eventEmitter: EventEmitter,
     private readonly repository: ProductRepository
   ) {
-    eventEmitter.on<SellProductCommand>(
-      SellProductCommand.name,
-      (command) => this.handle(command),
-      { promisify: true, async: true }
-    );
+    eventEmitter.on(SellProductCommand.name, (command) => this.handle(command), {
+      promisify: true,
+      async: true
+    });
 
     super(eventEmitter);
   }

@@ -1,4 +1,4 @@
-import { FindProductsRepository } from 'products/domain/FindProductsRepository';
+import { FindProductsRepository } from '@/products/domain/FindProductsRepository';
 
 export class FindProductsQueryService {
   constructor(private readonly repository: FindProductsRepository) {}
