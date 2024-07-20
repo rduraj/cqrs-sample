@@ -9,6 +9,7 @@ import { httpErrorWrapper } from 'interface/http/httpErrorWrapper.ts';
 import { sellProductRoute } from 'interface/http/products/sellProductRoute.ts';
 import { restockProductRoute } from 'interface/http/products/restockProductRoute.ts';
 import { placeOrderRoute } from 'interface/http/orders/placeOrderRoute.ts';
+import { findProductsRoute } from 'interface/http/products/findProductsRoute.ts';
 
 const runner = async () => {
   const app = express();
@@ -18,6 +19,7 @@ const runner = async () => {
   app.use(bodyParser.json());
 
   /** Products **/
+  app.get('/products', httpErrorWrapper(findProductsRoute(products)));
   app.post('/products', httpErrorWrapper(createProductRoute(products)));
   // Author note:
   // I would consider using PATCH method in those two particular endpoints:

@@ -16,10 +16,6 @@ export class MongodbProductRepository implements ProductRepository {
     });
   }
 
-  findAll(): Promise<Array<Product>> {
-    return this.collection.findAll().asArray();
-  }
-
   update(product: Product): Promise<Product> {
     return this.collection.updateOne(
       { _id: product.id() },

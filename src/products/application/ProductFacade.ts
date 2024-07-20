@@ -2,9 +2,13 @@ import { CreateProductCommand } from 'products/domain/events/CreateProductComman
 import { EventEmitter } from 'shared/events/EventEmitter.ts';
 import { RestockProductCommand } from 'products/domain/events/RestockProductCommand.ts';
 import { SellProductCommand } from 'products/domain/events/SellProductCommand.ts';
+import { FindProductsQueryService } from 'products/application/FindProductsQueryService.ts';
 
 export class ProductFacade {
-  constructor(private readonly eventEmitter: EventEmitter) {}
+  constructor(
+    private readonly eventEmitter: EventEmitter,
+    private readonly findProductsQueryService: FindProductsQueryService
+  ) {}
 
   create(name: string, description: string, price: number, stock: number) {
     return this.eventEmitter.emitAsync(
@@ -25,5 +29,9 @@ export class ProductFacade {
       SellProductCommand.name,
       new SellProductCommand(id, amountOfSoldItems)
     );
+  }
+
+  getListOfProducts() {
+    return this.findProductsQueryService.getListOfProducts();
   }
 }
