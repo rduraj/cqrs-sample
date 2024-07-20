@@ -1,5 +1,5 @@
-import { Event } from 'shared/events/Event.ts';
-import { Order } from 'orders/domain/Order.ts';
+import { Event } from 'shared/events/Event';
+import { Order } from 'orders/domain/Order';
 
 export class PlaceOrderCommand extends Event {
   constructor(readonly order: Order) {

@@ -1,7 +1,7 @@
-import { FindProductsRepository } from 'products/domain/FindProductsRepository.ts';
-import { FindProductsReadModel } from 'products/domain/FindProductsReadModel.ts';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
-import { MongodbFindProductsReadModel } from 'products/infrastructure/MongodbFindProductsReadModel.ts';
+import { FindProductsRepository } from 'products/domain/FindProductsRepository';
+import { FindProductsReadModel } from 'products/domain/FindProductsReadModel';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator';
+import { MongodbFindProductsReadModel } from 'products/infrastructure/MongodbFindProductsReadModel';
 import { Collection } from 'mongodb';
 
 export class MongodbFindProductsRepository implements FindProductsRepository {

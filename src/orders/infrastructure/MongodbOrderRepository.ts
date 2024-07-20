@@ -1,7 +1,7 @@
-import { OrderRepository } from 'orders/domain/OrderRepository.ts';
-import { Order } from 'orders/domain/Order.ts';
+import { OrderRepository } from 'orders/domain/OrderRepository';
+import { Order } from 'orders/domain/Order';
 import { ClientSession, Collection } from 'mongodb';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator';
 
 export class MongodbOrderRepository implements OrderRepository {
   private session: ClientSession;

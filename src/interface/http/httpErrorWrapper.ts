@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { HttpError } from 'interface/http/errors/HttpError.ts';
-import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
-import logger from 'shared/logger.ts';
-import { DomainError } from 'shared/errors/DomainError.ts';
+import { HttpError } from 'interface/http/errors/HttpError';
+import { HttpStatusCode } from 'interface/http/HttpStatusCode';
+import logger from 'shared/logger';
+import { DomainError } from 'shared/errors/DomainError';
 
 export const httpErrorWrapper =
   <T>(handler: (req: Request, res: Response) => Promise<Response>) =>

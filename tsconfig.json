@@ -1,26 +1,24 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "composite": true,
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["es2018", "esnext.asynciterable"],
+    "outDir": "./dist",
+    "rootDir": "./src",
     "strict": true,
-    "downlevelIteration": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "jsx": "preserve",
-    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "allowJs": true,
     "paths": {
       "*": ["src/*"],
-    },
-    "baseUrl": "./",
-    "types": [
-      "bun-types" // add Bun global
-    ]
-  }
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

@@ -1,4 +1,4 @@
-import { Order } from './Order.ts';
+import { Order } from './Order';
 
 export interface OrderRepository {
   startPlacingOrder();

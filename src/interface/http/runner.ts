@@ -1,15 +1,15 @@
 import express from 'express';
-import { PORT } from 'shared/config/envs.ts';
+import { PORT } from 'shared/config/envs';
 import logger from 'shared/logger';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import { bootstrap } from 'interface/bootstrap.ts';
-import { createProductRoute } from 'interface/http/products/createProductRoute.ts';
-import { httpErrorWrapper } from 'interface/http/httpErrorWrapper.ts';
-import { sellProductRoute } from 'interface/http/products/sellProductRoute.ts';
-import { restockProductRoute } from 'interface/http/products/restockProductRoute.ts';
-import { placeOrderRoute } from 'interface/http/orders/placeOrderRoute.ts';
-import { findProductsRoute } from 'interface/http/products/findProductsRoute.ts';
+import { bootstrap } from 'interface/bootstrap';
+import { createProductRoute } from 'interface/http/products/createProductRoute';
+import { httpErrorWrapper } from 'interface/http/httpErrorWrapper';
+import { sellProductRoute } from 'interface/http/products/sellProductRoute';
+import { restockProductRoute } from 'interface/http/products/restockProductRoute';
+import { placeOrderRoute } from 'interface/http/orders/placeOrderRoute';
+import { findProductsRoute } from 'interface/http/products/findProductsRoute';
 
 const runner = async () => {
   const app = express();

@@ -1,13 +1,16 @@
 {
   "name": "cqrs-sample",
-  "module": "index.ts",
-  "type": "module",
+  "main": "dist/index.js",
+
   "scripts": {
-    "test": "vitest",
-    "start": "bun index.ts",
-    "build": "bun build ./index.ts --outdir=dist",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "start": "node --experimental-specifier-resolution=node dist/index.js",
+    "dev": "ts-node-esm index.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "vitest"
+  },
+  "engines": {
+    "node": ">=20.14.0"
   },
   "devDependencies": {
     "@eslint/js": "9.7.0",
@@ -17,6 +20,7 @@
     "@types/uuid": "10.0.0",
     "eslint": "9.x",
     "globals": "^15.8.0",
+    "nodemon": "^3.1.4",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "tsx": "4.16.2",
@@ -37,7 +41,6 @@
     "uuid": "^10.0.0"
   },
   "version": "1.0.0",
-  "main": "index.ts",
   "repository": "git@github.com:rduraj/cqrs-sample.git",
   "author": "Robert Duraj <rduraj@gmail.com>",
   "license": "MIT"

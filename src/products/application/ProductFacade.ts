@@ -1,8 +1,8 @@
-import { CreateProductCommand } from 'products/domain/events/CreateProductCommand.ts';
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { RestockProductCommand } from 'products/domain/events/RestockProductCommand.ts';
-import { SellProductCommand } from 'products/domain/events/SellProductCommand.ts';
-import { FindProductsQueryService } from 'products/application/FindProductsQueryService.ts';
+import { CreateProductCommand } from 'products/domain/events/CreateProductCommand';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { RestockProductCommand } from 'products/domain/events/RestockProductCommand';
+import { SellProductCommand } from 'products/domain/events/SellProductCommand';
+import { FindProductsQueryService } from 'products/application/FindProductsQueryService';
 
 export class ProductFacade {
   constructor(

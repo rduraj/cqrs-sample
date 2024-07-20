@@ -1,7 +1,7 @@
-import { EventHandler } from 'shared/events/EventHandler.ts';
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { OrderRepository } from 'orders/domain/OrderRepository.ts';
-import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand.ts';
+import { EventHandler } from 'shared/events/EventHandler';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { OrderRepository } from 'orders/domain/OrderRepository';
+import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand';
 
 export class PlaceOrderHandler extends EventHandler {
   constructor(

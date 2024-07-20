@@ -1,9 +1,9 @@
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { Order } from 'orders/domain/Order.ts';
-import { SellProductCommand } from 'products/domain/events/SellProductCommand.ts';
-import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand.ts';
-import { OrderRepository } from 'orders/domain/OrderRepository.ts';
-import logger from 'shared/logger.ts';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { Order } from 'orders/domain/Order';
+import { SellProductCommand } from 'products/domain/events/SellProductCommand';
+import { PlaceOrderCommand } from 'orders/domain/events/PlaceOrderCommand';
+import { OrderRepository } from 'orders/domain/OrderRepository';
+import logger from 'shared/logger';
 
 export class OrderPlacingService {
   constructor(

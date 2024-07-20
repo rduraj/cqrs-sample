@@ -1,12 +1,12 @@
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { ProductFacade } from 'products/application/ProductFacade.ts';
-import { MongodbProductRepository } from 'products/infrastructure/MongodbProductRepository.ts';
-import { CreateProductHandler } from 'products/application/CreateProductHandler.ts';
-import { RestockProductHandler } from 'products/application/RestockProductHandler.ts';
-import { SellProductHandler } from 'products/application/SellProductHandler.ts';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
-import { MongodbFindProductsRepository } from 'products/infrastructure/MongodbFindProductsRepository.ts';
-import { FindProductsQueryService } from 'products/application/FindProductsQueryService.ts';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { ProductFacade } from 'products/application/ProductFacade';
+import { MongodbProductRepository } from 'products/infrastructure/MongodbProductRepository';
+import { CreateProductHandler } from 'products/application/CreateProductHandler';
+import { RestockProductHandler } from 'products/application/RestockProductHandler';
+import { SellProductHandler } from 'products/application/SellProductHandler';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator';
+import { MongodbFindProductsRepository } from 'products/infrastructure/MongodbFindProductsRepository';
+import { FindProductsQueryService } from 'products/application/FindProductsQueryService';
 
 export const productsModuleConfig = (eventEmitter: EventEmitter, mongoClient: MongoDbOperator) => {
   const repository = new MongodbProductRepository(mongoClient);

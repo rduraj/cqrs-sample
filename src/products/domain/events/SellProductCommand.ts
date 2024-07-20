@@ -1,4 +1,4 @@
-import { Event } from 'shared/events/Event.ts';
+import { Event } from 'shared/events/Event';
 
 export class SellProductCommand extends Event {
   constructor(

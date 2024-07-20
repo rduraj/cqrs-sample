@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
-import { BadRequestError } from 'interface/http/errors/BadRequestError.ts';
+import { HttpStatusCode } from 'interface/http/HttpStatusCode';
+import { BadRequestError } from 'interface/http/errors/BadRequestError';
 import Joi from 'joi';
-import { OrderFacade } from 'orders/application/OrderFacade.ts';
+import { OrderFacade } from 'orders/application/OrderFacade';
 
 type PlaceOrderPayload = {
   customerId: number;

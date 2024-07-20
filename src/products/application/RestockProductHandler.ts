@@ -1,7 +1,7 @@
-import { EventHandler } from 'shared/events/EventHandler.ts';
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { ProductRepository } from 'products/domain/ProductRepository.ts';
-import { RestockProductCommand } from 'products/domain/events/RestockProductCommand.ts';
+import { EventHandler } from 'shared/events/EventHandler';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { ProductRepository } from 'products/domain/ProductRepository';
+import { RestockProductCommand } from 'products/domain/events/RestockProductCommand';
 
 export class RestockProductHandler extends EventHandler {
   constructor(

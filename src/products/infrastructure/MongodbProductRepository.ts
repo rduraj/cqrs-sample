@@ -1,7 +1,7 @@
-import { ProductRepository } from '../domain/ProductRepository.ts';
-import { Product } from '../domain/Product.ts';
-import { ProductNotFoundError } from 'products/domain/errors/ProductNotFoundError.ts';
-import { MongoDbOperator } from 'shared/database/MongoDbOperator.ts';
+import { ProductRepository } from '../domain/ProductRepository';
+import { Product } from '../domain/Product';
+import { ProductNotFoundError } from 'products/domain/errors/ProductNotFoundError';
+import { MongoDbOperator } from 'shared/database/MongoDbOperator';
 
 export class MongodbProductRepository implements ProductRepository {
   private collection;

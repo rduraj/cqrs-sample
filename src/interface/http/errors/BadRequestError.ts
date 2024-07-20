@@ -1,5 +1,5 @@
-import { HttpError } from 'interface/http/errors/HttpError.ts';
-import { HttpStatusCode } from 'interface/http/HttpStatusCode.ts';
+import { HttpError } from 'interface/http/errors/HttpError';
+import { HttpStatusCode } from 'interface/http/HttpStatusCode';
 
 export class BadRequestError extends HttpError {
   constructor(message: string) {

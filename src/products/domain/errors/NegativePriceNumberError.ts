@@ -1,4 +1,4 @@
-import { DomainError } from 'shared/errors/DomainError.ts';
+import { DomainError } from 'shared/errors/DomainError';
 
 export class NegativePriceNumberError extends DomainError {
   constructor() {

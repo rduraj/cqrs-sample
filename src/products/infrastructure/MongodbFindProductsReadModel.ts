@@ -1,4 +1,4 @@
-import { FindProductsReadModel } from 'products/domain/FindProductsReadModel.ts';
+import { FindProductsReadModel } from 'products/domain/FindProductsReadModel';
 
 export class MongodbFindProductsReadModel implements FindProductsReadModel {
   constructor(

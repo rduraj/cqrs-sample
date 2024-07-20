@@ -1,9 +1,9 @@
-import { EventHandler } from 'shared/events/EventHandler.ts';
-import { CreateProductCommand } from 'products/domain/events/CreateProductCommand.ts';
-import { Product } from 'products/domain/Product.ts';
-import { uuid } from 'shared/uuid.ts';
-import { EventEmitter } from 'shared/events/EventEmitter.ts';
-import { ProductRepository } from 'products/domain/ProductRepository.ts';
+import { EventHandler } from 'shared/events/EventHandler';
+import { CreateProductCommand } from 'products/domain/events/CreateProductCommand';
+import { Product } from 'products/domain/Product';
+import { uuid } from 'shared/uuid';
+import { EventEmitter } from 'shared/events/EventEmitter';
+import { ProductRepository } from 'products/domain/ProductRepository';
 
 export class CreateProductHandler extends EventHandler {
   constructor(

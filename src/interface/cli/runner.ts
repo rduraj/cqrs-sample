@@ -1,6 +1,6 @@
 import prompts from 'prompts';
-import { bootstrap } from 'interface/bootstrap.ts';
-import logger from 'shared/logger.ts';
+import { bootstrap } from 'interface/bootstrap';
+import logger from 'shared/logger';
 import * as process from 'process';
 
 /**
