@@ -6,10 +6,10 @@ export class Product {
   #productStock: ProductStock = new ProductStock();
 
   constructor(
-    private readonly _id: string = uuid(),
-    private readonly name: string,
-    private readonly description: string,
-    private readonly price: number,
+    readonly _id: string = uuid(),
+    readonly name: string,
+    readonly description: string,
+    readonly price: number,
     stock: number
   ) {
     if (price < 0) {

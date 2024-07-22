@@ -2,16 +2,20 @@ import { ProductRepository } from '../domain/ProductRepository';
 import { Product } from '../domain/Product';
 import { ProductNotFoundError } from '@/products/domain/errors/ProductNotFoundError';
 import { MongoDbOperator } from '@/shared/database/MongoDbOperator';
+import { ProductModel } from '@/products/domain/ProductModel';
 
 export class MongodbProductRepository implements ProductRepository {
   private collection;
   constructor(private readonly mongoClient: MongoDbOperator) {
-    this.collection = mongoClient.db.collection('products');
+    this.collection = mongoClient.db.collection<ProductModel>('products');
   }
 
   async create(product: Product): Promise<void> {
     await this.collection.insertOne({
-      ...product,
+      id: product.id(),
+      name: product.name,
+      description: product.description,
+      price: product.price,
       stock: product.howManyLeft()
     });
   }
@@ -21,7 +25,9 @@ export class MongodbProductRepository implements ProductRepository {
       { id: product.id() },
       {
         $set: {
-          ...product,
+          name: product.name,
+          description: product.description,
+          price: product.price,
           stock: product.howManyLeft()
         }
       },
@@ -31,16 +37,11 @@ export class MongodbProductRepository implements ProductRepository {
 
   async findOne(id: string): Promise<Product> {
     const product = await this.collection.findOne({ id: id });
+
     if (!product) {
       throw new ProductNotFoundError();
     }
 
-    return new Product(
-      product.id.toString(),
-      product.name,
-      product.description,
-      product.price,
-      product.stock
-    );
+    return new Product(product.id, product.name, product.description, product.price, product.stock);
   }
 }

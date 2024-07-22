@@ -1,13 +1,14 @@
 import { EventEmitter } from '@/shared/events/EventEmitter';
 import { Order } from '@/orders/domain/Order';
-import { SellProductCommand } from '@/products/domain/events/SellProductCommand';
 import { PlaceOrderCommand } from '@/orders/domain/events/PlaceOrderCommand';
 import { OrderRepository } from '@/orders/domain/OrderRepository';
 import logger from '@/shared/logger';
+import { ProductFacade } from '@/products/application/ProductFacade';
 
 export class OrderPlacingService {
   constructor(
     private readonly repository: OrderRepository,
+    private readonly productFacade: ProductFacade,
     private readonly eventEmitter: EventEmitter
   ) {}
 
@@ -19,10 +20,7 @@ export class OrderPlacingService {
       const productAdding = products.map((product) => {
         order.addProduct(product.id, product.amount);
 
-        return this.eventEmitter.emitAsync(
-          SellProductCommand.name,
-          new SellProductCommand(product.id, product.amount)
-        );
+        return this.productFacade.sell(product.id, product.amount);
       });
 
       await Promise.all(productAdding);

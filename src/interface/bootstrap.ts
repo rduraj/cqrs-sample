@@ -9,8 +9,8 @@ export const bootstrap = async () => {
   const mongoOperator = await new MongoDbOperator(MONGODB_URI, MONGODB_DATABASE);
   await mongoOperator.connect();
 
-  return {
-    products: productsModuleConfig(eventEmitter, mongoOperator),
-    orders: ordersModuleConfig(eventEmitter, mongoOperator)
-  };
+  const products = productsModuleConfig(eventEmitter, mongoOperator);
+  const orders = ordersModuleConfig(eventEmitter, mongoOperator, products);
+
+  return { products, orders };
 };
