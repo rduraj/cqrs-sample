@@ -1,0 +1,16 @@
+POST http://localhost:8181/orders
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "products": [
+    {
+      "id": "54014b8e-68e5-42bd-a34f-51b5c660810a",
+      "amount": 2
+    },
+    {
+      "id": "39359065-7a5f-4a66-8837-db9b432275c0",
+      "amount": 2
+    }
+  ]
+}
