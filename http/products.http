@@ -1,0 +1,27 @@
+GET http://localhost:8181/products
+Content-Type: application/json
+
+###
+
+POST http://localhost:8181/products
+Content-Type: application/json
+
+{ "name" : "Starship", "description": "Brand new Death Star", "price": 12, "stock": 2 }
+
+###
+
+POST http://localhost:8181/products/c81b357f-aecc-48de-b138-fbe693f38b68/restock
+Content-Type: application/json
+
+{
+  "itemsToAdd": 50
+}
+
+###
+
+POST http://localhost:8181/products/b071467a-f6ec-4135-931e-ced2609e4343/sell
+Content-Type: application/json
+
+{
+  "amountOfSoldItems": 50
+}
